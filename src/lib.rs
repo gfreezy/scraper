@@ -149,3 +149,7 @@ pub mod element_ref;
 pub mod html;
 pub mod node;
 pub mod selector;
+
+pub use html5ever::tokenizer::TokenizerOpts;
+pub use html5ever::tree_builder::TreeBuilderOpts;
+pub use html5ever::ParseOpts;

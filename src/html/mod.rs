@@ -6,6 +6,7 @@ use ego_tree::iter::Nodes;
 use ego_tree::Tree;
 use html5ever::driver;
 use html5ever::tree_builder::QuirksMode;
+use html5ever::ParseOpts;
 use html5ever::QualName;
 use tendril::TendrilSink;
 
@@ -69,6 +70,12 @@ impl Html {
     /// ```
     pub fn parse_document(document: &str) -> Self {
         let parser = driver::parse_document(Self::new_document(), Default::default());
+        parser.one(document)
+    }
+
+    /// Parses a string of HTML as a document with options.
+    pub fn parse_document_with_options(document: &str, options: ParseOpts) -> Self {
+        let parser = driver::parse_document(Self::new_document(), options);
         parser.one(document)
     }
 
